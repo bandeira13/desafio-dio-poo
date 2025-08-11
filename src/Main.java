@@ -1,23 +1,29 @@
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.Conteudo;
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso de java");
-        curso1.setCargaHoraria(8);
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso C# ");
-        curso2.setDescricao("descrição do curso de C#");
-        curso2.setCargaHoraria(10);
+        Conteudo curso1 = new Curso();
+        curso1.setTitulo("Curso Java");
+        curso1.setDescricao("Descrição curso de Java");
+        ((Curso) curso1).setCargaHoraria(8);
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo(" Mentoria de JAVA");
+        Conteudo curso2 = new Curso();
+        curso2.setTitulo("Curso C#");
+        curso2.setDescricao("Descrição do curso de C#");
+        ((Curso) curso2).setCargaHoraria(10);
+
+        Conteudo mentoria = new Mentoria();
+        mentoria.setTitulo("Mentoria de JAVA");
         mentoria.setDescricao("Mentorias de JAVA");
-        mentoria.setData(LocalDate.now());
+        ((Mentoria) mentoria).setData(LocalDate.now());
 
+
+        System.out.println("XP Curso1: " + curso1.calcularXp());
+        System.out.println("XP Curso2: " + curso2.calcularXp());
+        System.out.println("XP Mentoria: " + mentoria.calcularXp());
     }
 }
