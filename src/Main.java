@@ -1,6 +1,4 @@
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Mentoria;
-import br.com.dio.desafio.dominio.Conteudo;
+import br.com.dio.desafio.dominio.*;
 import java.time.LocalDate;
 
 public class Main {
@@ -21,9 +19,38 @@ public class Main {
         mentoria.setDescricao("Mentorias de JAVA");
         ((Mentoria) mentoria).setData(LocalDate.now());
 
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp em Java");
+        bootcamp.setDescricao("Descrição do bootcamp de Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
 
-        System.out.println("XP Curso1: " + curso1.calcularXp());
-        System.out.println("XP Curso2: " + curso2.calcularXp());
-        System.out.println("XP Mentoria: " + mentoria.calcularXp());
+        Dev devEu = new Dev();
+        devEu.setNome("Bandeira13");
+        devEu.inscreverBootcamp(bootcamp);
+
+        // Antes de progredir
+        System.out.println(" Conteúdos inscritos (início):");
+        devEu.getConteudosInscritos().forEach(System.out::println);
+
+        // Progresso 1
+        devEu.progredir();
+        System.out.println("\n Depois do 1º progresso:");
+        System.out.println("Concluídos:");
+        devEu.getConteudosConcluidos().forEach(System.out::println);
+        System.out.println("Inscritos restantes:");
+        devEu.getConteudosInscritos().forEach(System.out::println);
+
+        // Progresso 2
+        devEu.progredir();
+        System.out.println("\n Depois do 2º progresso:");
+        System.out.println("Concluídos:");
+        devEu.getConteudosConcluidos().forEach(System.out::println);
+        System.out.println("Inscritos restantes:");
+        devEu.getConteudosInscritos().forEach(System.out::println);
+
+        // XP total
+        System.out.println("\nXP Total: " + devEu.calcularTotalXp());
     }
 }
